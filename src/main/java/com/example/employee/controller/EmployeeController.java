@@ -27,7 +27,7 @@ public class EmployeeController {
         this.modelMapper = modelMapper;
         this.employeeService = employeeService;
     }
-
+    //post mapping for creating employee
     @PostMapping("/employees")
     public ResponseEntity<EmployeeResponseModel> createEmployee(@RequestBody EmployeeRequestModel employeeRequestModel) {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
@@ -36,7 +36,7 @@ public class EmployeeController {
         employeeDto = employeeService.createEmployee(employeeDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(modelMapper.map(employeeDto,EmployeeResponseModel.class));
     }
-
+    //get mapping
     @GetMapping("/employees")
     public ResponseEntity<List<EmployeeResponseModel>> getEmployees()
     {
